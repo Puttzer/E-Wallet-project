@@ -1,16 +1,23 @@
 <template>
-  <div class="card">
-    <!-- space to hold card number -->
-    <!-- <h1 class="card-num">{{cardnumber}}</h1> -->
-    <h1 class="card-num">1234567890987654</h1>
-    <ul class="owner-input">
+  <div
+    v-on:click="$emit('change-card', cardInfo)"
+    class="card"
+    :style="{'background-color':cardInfo.bgColor}"
+  >
+    <div class="vendor">
+      <img :src="cardInfo.chip" alt="vendor" />
+      <img :src="cardInfo.vendor" alt="vendor" />
+    </div>
+
+    <h1>{{cardInfo.cardNum}}</h1>
+    <ul>
       <li>
-        <span>Cardholder Name</span>
-        <p>Test Name</p>
+        <p>Cardholder name</p>
+        <h2>{{cardInfo.Name}}</h2>
       </li>
       <li>
-        <span>Valid Thru</span>
-        <p>01/22</p>
+        <p>Valid thru</p>
+        <h2>{{cardInfo.vaildThru}}</h2>
       </li>
     </ul>
   </div>
@@ -18,35 +25,46 @@
 
 <script>
 export default {
-  name: "Card"
-  // props: "cardnumber"
+  name: "Card",
+  props: ["cardInfo"]
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .card {
-  background-color: blueviolet;
-  max-width: 24rem;
-  height: 14rem;
-  border-radius: 0.6rem;
-  /* display: grid;
-  grid-template-columns: 1fr, auto;
-  grid-template-rows: 1fr, auto; */
-}
-
-.card-num {
-  margin: 6rem 0;
-  font-size: 1.9rem;
-  font-weight: 100;
-  letter-spacing: 2px;
-  /* grid-area: 1/1/1/2; */
-}
-
-.owner-input {
-  list-style: none;
+  width: 80%;
+  z-index: 1;
+  margin: auto;
+  height: 250px;
   display: flex;
-  margin: 1.9rem 0;
-  text-align: left;
+  padding: 1rem;
+  color: #fff;
+  flex-flow: column;
+  border-radius: 10px;
   justify-content: space-between;
+  box-shadow: 0 0 10px rgba(#000, 0.2);
+  .vendor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  h1 {
+    margin: 1rem 0;
+    letter-spacing: 2px;
+  }
+  ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: space-between;
+    li {
+      p {
+        text-transform: uppercase;
+      }
+      &:nth-child(2) {
+        text-align: right;
+      }
+    }
+  }
 }
-</style>
+</style> 
