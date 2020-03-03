@@ -15,6 +15,6 @@ export default {
 h1 {
   margin: 2rem 0;
   text-align: center;
-  font-family: "Fira Code";
+  // font-family: "Fira Code";
   text-transform: uppercase;
 }

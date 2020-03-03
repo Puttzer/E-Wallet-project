@@ -1,23 +1,23 @@
 <template>
-  <div
-    v-on:click="$emit('change-card', cardInfo)"
-    class="card"
-    :style="{'background-color':cardInfo.bgColor}"
-  >
+  <div v-on:click="$emit('change-card', cardInfo)" class="card" v-bind:class="cardInfo.vendorName">
     <div class="vendor">
       <img :src="cardInfo.chip" alt="vendor" />
-      <img :src="cardInfo.vendor" alt="vendor" />
+      <img :src="cardInfo.vendorImage" alt="vendor" />
     </div>
 
-    <h1>{{cardInfo.cardNum}}</h1>
+    <h1>{{format}}</h1>
     <ul>
       <li>
         <p>Cardholder name</p>
         <h2>{{cardInfo.Name}}</h2>
       </li>
-      <li>
+      <li class="validiliy">
         <p>Valid thru</p>
-        <h2>{{cardInfo.vaildThru}}</h2>
+        <div>
+          <h2>{{ cardInfo.month }}</h2>
+          <h2>/</h2>
+          <h2>{{ cardInfo.year }}</h2>
+        </div>
       </li>
     </ul>
   </div>
@@ -26,14 +26,19 @@
 <script>
 export default {
   name: "Card",
-  props: ["cardInfo"]
+  props: ["cardInfo"],
+  computed: {
+    format() {
+      console.log(this.cardInfo.cardNum.replace(/(\d{4})(?=\d)/g, "$1 "));
+      return this.cardInfo.cardNum.replace(/(\d{4})(?=\d)/g, "$1 ");
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
   width: 80%;
-  z-index: 1;
   margin: auto;
   height: 250px;
   display: flex;
@@ -48,9 +53,23 @@ export default {
     align-items: center;
     justify-content: space-between;
   }
+  &.evil {
+    background-color: red;
+  }
+  &.ninja {
+    background-color: #222;
+  }
+  &.blockchain {
+    background-color: #8b58f9;
+  }
+  &.bitcoin {
+    background-color: #ffae34;
+  }
   h1 {
     margin: 1rem 0;
     letter-spacing: 2px;
+    padding-left: 25px;
+    font-size: 25px;
   }
   ul {
     display: flex;
@@ -60,9 +79,19 @@ export default {
     li {
       p {
         text-transform: uppercase;
+        font-size: 15px;
       }
       &:nth-child(2) {
         text-align: right;
+      }
+    }
+
+    li.validiliy {
+      display: block;
+      text-align: right;
+
+      h2 {
+        font-size: 15;
       }
     }
   }

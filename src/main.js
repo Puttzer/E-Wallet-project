@@ -10,23 +10,31 @@ new Vue({
     cards: [
       {
         id: 1,
-        chip: require("./assets/chip-light.svg"),
-        vendor: require("./assets/vendor-blockchain.svg"),
-        cardNum: "1111 2222 3333 4444",
+        chip: require("./assets/chip-dark.svg"),
+        vendorName: 'bitcoin',
+        cardNum: "1111222233334444",
         Name: "Anders Andersson",
-        vaildThru: "01/22",
-        bgColor: "#87240F"
+        vendorImage: require("./assets/vendor-bitcoin.svg"),
+        month: "02",
+        year: "24",
       },
       {
         id: 2,
-        chip: require("./assets/chip-light.svg"),
-        vendor: require("./assets/vendor-blockchain.svg"),
+        chip: require("./assets/chip-dark.svg"),
+        vendorName: 'evil',
         cardNum: "1111 2222 3333 4444",
         Name: "Anders Andersson",
-        vaildThru: "02/22",
-        bgColor: "#0F1F87"
+        vendorImage: require("./assets/vendor-evil.svg"),
+        month: "01",
+        year: "44",
+
       },
     ]
   }),
+  mounted() {
+    this.$root.$on("addcard", data => {
+      this.cards.push(data);
+    });
+  },
   render: h => h(App)
 }).$mount('#app')

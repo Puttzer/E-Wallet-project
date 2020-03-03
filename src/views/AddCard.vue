@@ -1,32 +1,49 @@
 <template>
-  <div class="addcard">
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-    </div>
-    <H1>THIS IS ADDCARD PAGE</H1>
+  <div class="wrapper">
+    <Top heading="Add a new card" />
+    <Card :cardInfo="cardInfo" />
 
-    <router-view />
+    <AddCardForm @select="SelectBg" :cardInfo="cardInfo" />
   </div>
 </template>
 
 
 
 <script>
-// import Card from "../components/Card";
-// import Top from "../components/Top";
-// import CardStack from "../components/CardStack";
+import Card from "../components/Card";
+import Top from "../components/Top";
+import AddCardForm from "../components/AddCardForm";
 export default {
-  name: "AddCard"
+  name: "AddCard",
+  components: { Top, Card, AddCardForm },
+
+  data: () => ({
+    cardInfo: {
+      // Default
+      chip: require("../assets/chip-light.svg"),
+      vendorImage: require("../assets/vendor-bitcoin.svg"),
+      cardNum: "",
+      Name: "",
+      month: "",
+      year: "",
+      vendorName: null
+    }
+  }),
+
+  methods: {
+    SelectBg(vendor) {
+      this.cardInfo.vendorName = vendor;
+      this.cardInfo.vendorImage = require(`../assets/vendor-${vendor}.svg`);
+    }
+  }
 };
 </script>
 
 <style>
-h1 {
-  font-family: "Fira Code";
+.wrapper {
+  width: 70%;
 }
-a {
-  font-family: "Fira Code";
-  text-decoration: none;
-  font-size: 34px;
+body {
+  background-color: #ccc;
 }
 </style>

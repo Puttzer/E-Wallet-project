@@ -4,8 +4,7 @@
       @change-card="$emit('change-card', card)"
       v-for="card in cards"
       :key="card.id"
-      :cardInfo="card"
-      class="card-item"
+      v-bind:cardInfo="card"
     />
   </div>
 </template>
@@ -14,6 +13,9 @@
 import Card from "./Card";
 export default {
   name: "CardStack",
+  data: () => ({
+    cardInfo: Object
+  }),
   components: { Card },
   computed: {
     cards() {
@@ -28,5 +30,6 @@ export default {
   display: grid;
   margin: 4rem 0 14rem;
   grid-auto-rows: 4rem;
+  color: black;
 }
 </style>

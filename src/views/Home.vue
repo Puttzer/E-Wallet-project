@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <Top heading="E-wallet" />
-    <h3>Active card</h3>
+    <h2>Active card</h2>
     <Card :cardInfo="cardInfo" />
     <CardStack @change-card="ChangeCard" />
     <router-link to="/addcard">Add new card</router-link>
@@ -18,12 +18,12 @@ export default {
 
   data: () => ({
     cardInfo: {
+      id: Date.now(),
       chip: require("../assets/chip-dark.svg"),
-      vendor: require("../assets/vendor-evil.svg"),
-      cardNum: "0000 0000 0000 0000",
-      Name: "Test name",
-      vaildThru: "01/22",
-      bgColor: "#ffb649"
+      vendorImage: require("../assets/vendor-bitcoin.svg"),
+      cardNum: "",
+      Name: "",
+      vaildThru: "01/22"
     }
   }),
   methods: {
@@ -34,15 +34,15 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped >
+<style lang="scss" >
 .wrapper {
   width: 100%;
   margin: auto;
   padding: 2rem;
   max-width: 560px;
-  background: #fff;
-  // font-family: "Fira Code";
-  h3 {
+
+  // font-family: "Fira Code";  DOES NOT FORMAT CORRECTLY TO DOCUMENT CHANGE OR REMOVE!
+  h2 {
     color: #999;
     font-size: 0.8rem;
     text-align: center;
@@ -55,7 +55,6 @@ export default {
     padding: 20px;
     color: #000;
     display: block;
-    transition: 0.3s;
     font-weight: bold;
     font-size: 1.3rem;
     border-radius: 5px;
@@ -67,6 +66,27 @@ export default {
       color: #fff;
       background: #000;
     }
+  }
+}
+
+.btn-primary {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  color: #000;
+  display: block;
+  transition: 0.3s;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid #000;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #fff;
+    background: #000;
   }
 }
 </style>

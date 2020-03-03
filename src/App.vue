@@ -5,7 +5,7 @@
 </template>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
+// @import url("https://fonts.googleapis.com/css?family=Fira+Code&display=swap");
 
 * {
   box-sizing: border-box;
@@ -14,6 +14,6 @@
 }
 
 body {
-  background: #eee;
+  font-family: PT Mono, monospace;
 }
 </style>
