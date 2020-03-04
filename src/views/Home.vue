@@ -2,8 +2,8 @@
   <div class="wrapper">
     <Top heading="E-wallet" />
     <h2>Active card</h2>
-    <Card :cardInfo="cardInfo" />
-    <CardStack @change-card="ChangeCard" />
+    <Card class="TopCard" :cardInfo="card" />
+    <CardStack :cards="activeCard" @change-card="ChangeCard" />
     <router-link to="/addcard">Add new card</router-link>
   </div>
 </template>
@@ -17,15 +17,15 @@ export default {
   components: { Top, Card, CardStack },
 
   data: () => ({
-    cardInfo: {
-      id: Date.now(),
-      chip: require("../assets/chip-dark.svg"),
-      vendorImage: require("../assets/vendor-bitcoin.svg"),
-      cardNum: "",
-      Name: "",
-      vaildThru: "01/22"
-    }
+    cardInfo: {},
+    activeCardIndex: 0
   }),
+
+  computed: {
+    activeCard() {
+      return this.$root.$data.cards[this.activeCardIndex];
+    }
+  },
   methods: {
     ChangeCard(data) {
       this.cardInfo = data;
