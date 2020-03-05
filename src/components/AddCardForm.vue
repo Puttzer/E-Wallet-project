@@ -14,7 +14,7 @@
     <input type="text" id="name" v-model="cardInfo.Name" placeholder="Input Full name" />
 
     <div>
-      <div>
+      <div class="valid">
         <h4>Valid Thru</h4>
         <label for="month">Month</label>
         <select v-model="cardInfo.month" id="month">
@@ -80,6 +80,7 @@ form {
     margin: 2rem 0 0.5rem 0;
     text-transform: uppercase;
   }
+
   div {
     display: flex;
     justify-content: space-between;

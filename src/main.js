@@ -9,7 +9,6 @@ new Vue({
   data: () => ({
     cards: [
       {
-        id: 1,
         chip: require("./assets/chip-dark.svg"),
         vendorName: 'bitcoin',
         cardNum: "1111222233334444",
@@ -19,12 +18,11 @@ new Vue({
         year: "24",
       },
       {
-        id: 2,
-        chip: require("./assets/chip-dark.svg"),
-        vendorName: 'evil',
-        cardNum: "1111 2222 3333 4444",
-        Name: "Anders Andersson",
-        vendorImage: require("./assets/vendor-evil.svg"),
+        chip: require("./assets/chip-light.svg"),
+        vendorName: 'ninja',
+        cardNum: "i836593012376591",
+        Name: "SPECIMEN MCSPEZ",
+        vendorImage: require("./assets/vendor-ninja.svg"),
         month: "01",
         year: "44",
 

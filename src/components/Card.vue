@@ -2,7 +2,11 @@
   <div v-on:click="$emit('change-card', cardInfo)" class="card" v-bind:class="cardInfo.vendorName">
     <div class="vendor">
       <img :src="cardInfo.chip" alt="vendor" />
-      <img :src="cardInfo.vendorImage" alt="vendor" />
+      <img
+        :src="require(`../assets/vendor-${cardInfo.vendorName}.svg`)"
+        alt="vendor"
+        v-if="cardInfo.vendorName !=null"
+      />
     </div>
 
     <h1>{{format}}</h1>
@@ -48,6 +52,7 @@ export default {
   border-radius: 10px;
   justify-content: space-between;
   box-shadow: 0 0 10px rgba(#000, 0.2);
+  z-index: 1;
   .vendor {
     display: flex;
     align-items: center;
@@ -78,20 +83,23 @@ export default {
     justify-content: space-between;
     li {
       p {
+        font-size: 0.9rem;
+      }
+      p,
+      h2 {
         text-transform: uppercase;
-        font-size: 15px;
+      }
+      h2 {
+        font-size: 1.2rem;
       }
       &:nth-child(2) {
         text-align: right;
-      }
-    }
-
-    li.validiliy {
-      display: block;
-      text-align: right;
-
-      h2 {
-        font-size: 15;
+        div {
+          text-align: right;
+          h2 {
+            display: inline;
+          }
+        }
       }
     }
   }

@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
     <Top heading="Add a new card" />
-    <Card :cardInfo="cardInfo" />
+    <Card :cardInfo="cardInfo" class="TopCard" />
 
-    <AddCardForm @select="SelectBg" :cardInfo="cardInfo" />
+    <AddCardForm :cardInfo="cardInfo" />
   </div>
 </template>
 
@@ -28,14 +28,7 @@ export default {
       year: "",
       vendorName: null
     }
-  }),
-
-  methods: {
-    SelectBg(vendor) {
-      this.cardInfo.vendorName = vendor;
-      this.cardInfo.vendorImage = require(`../assets/vendor-${vendor}.svg`);
-    }
-  }
+  })
 };
 </script>
 

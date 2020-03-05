@@ -16,10 +16,11 @@ export default {
   name: "Home",
   components: { Top, Card, CardStack },
 
-  data: () => ({
-    cardInfo: {},
-    activeCardIndex: 0
-  }),
+  data() {
+    return {
+      card: this.$root.cards[0]
+    };
+  },
 
   computed: {
     activeCard() {
@@ -28,7 +29,7 @@ export default {
   },
   methods: {
     ChangeCard(data) {
-      this.cardInfo = data;
+      this.card = data;
     }
   }
 };
