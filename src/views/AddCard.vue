@@ -1,10 +1,12 @@
 <template>
-  <div class="wrapper">
-    <Top heading="Add a new card" />
-    <Card :cardInfo="cardInfo" class="TopCard" />
-
-    <AddCardForm :cardInfo="cardInfo" />
+  <div class="main">
+    <div class="wrapper">
+      <Top heading="Add a new card" />
+      <Card :cardInfo="cardInfo" class="TopCard" />
+      <AddCardForm :cardInfo="cardInfo" />
+    </div>
   </div>
+
 </template>
 
 
@@ -33,9 +35,24 @@ export default {
 </script>
 
 <style>
+.main {
+  background: #780206;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #061161, #780206);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #061161, #780206);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.TopCard{
+  background: #ccc;
+}
+
 .wrapper {
+  color: white;
   width: 70%;
 }
+
 body {
   background-color: #ccc;
 }
